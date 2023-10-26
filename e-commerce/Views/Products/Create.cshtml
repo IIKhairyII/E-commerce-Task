@@ -1,0 +1,44 @@
+﻿<!--Partial view for adding new products-->
+@model Products
+<div>
+    @if(Model != null)
+    {
+    <div>
+        @if(@Model.isCreated && @Model.isCreated != null)
+        {
+        <p class="text-success">@Model.ResponseMessage</p>
+        }
+        else{
+            <p class="text-danger">@Model.ResponseMessage</p>
+        }
+    </div> 
+    }
+    <div>
+        <form method="post" asp-action="Create" asp-controller="Products" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="ProuctName" class="form-label required-label">Product Name</label>
+                <input asp-for="ProuctName" type="text" class="form-control">
+                <span asp-validation-for="ProuctName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Brand" class="form-label">Product Brand</label>
+                <input asp-for="Brand" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label asp-for="Type" class="form-label">Product Type</label>
+              <input asp-for="Type" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label asp-for="Description" class="form-label required-label">Product Description</label>
+              <input asp-for="Description" type="text" class="form-control">
+               <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label required-label">Product Image</label>
+                <input asp-for="Image" class="form-control" type="file">
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+             <button type="submit" class="btn btn-primary">Create Product</button>
+        </form>
+    </div>
+</div>

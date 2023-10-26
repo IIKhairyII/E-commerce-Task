@@ -1,0 +1,61 @@
+﻿@model e_commerce.Pagination.PaginatedList<Products>
+
+    <div>
+       @* <div>
+            <button class="btn btn-primary">
+            <a class="text-white nav-link p-0" asp-controller="Products" asp-action="Index">Create New Product</a>
+            </button>
+        </div>*@
+    <div class="shell w-100">
+        <div class="container-fluid d-flex flex-wrap justify-content-evenly w-100">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3 m-2">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img p-2">
+                            <img src="@product.ImageUrl" alt="@product.ProuctName" class="img-responsive" />
+                        </div>
+                        <div class="wsk-cp-text">
+                            <div class="category">
+                                <span>@product.Brand</span>
+                            </div>
+                            <div class="title-product">
+                                <h3>@product.ProuctName</h3>
+                            </div>
+                            <div class="description-prod">
+                                <p>@product.Description</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">@product.Type</span></div>
+                                <div class="wcf-right"><a href="#" class="buy-btn"><i class="fa-solid fa-basket-shopping"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+
+    <div class="shell">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+    </div>

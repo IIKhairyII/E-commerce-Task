@@ -1,0 +1,32 @@
+﻿@page
+@model LoginModel
+
+<div class="row">
+    <div class="col-md-4 login-page">
+        <section class="form">
+            <form id="account" method="post" class="login-form">
+                <h2>Login</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating m-1">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <label asp-for="Input.Email" class="form-label"></label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating m-1">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                    <label asp-for="Input.Password" class="form-label"></label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-dark">Log in</button>
+                </div>
+                <p class="message">Not registered? <a class="text-dark" asp-area="Identity" asp-page="/Account/Register">Create an account</a></p>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
